@@ -17,7 +17,7 @@ public class Book {
         this.availableCopies = totalCopies;
     }
 
-    // Getter Methods
+    // Getters
     public int getId() {
         return id;
     }
@@ -38,33 +38,35 @@ public class Book {
         return availableCopies;
     }
 
-    // Setter Methods
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
+    // Setters (keep minimal usage)
+    public void setAvailableCopies(int availableCopies) {
+        this.availableCopies = availableCopies;
     }
 
     public void setTotalCopies(int totalCopies) {
         this.totalCopies = totalCopies;
     }
 
-    public void setAvailableCopies(int availableCopies) {
-        this.availableCopies = availableCopies;
+    // ✅ Add helper methods (VERY IMPORTANT for services)
+
+    public void issueBook() {
+        if (availableCopies > 0) {
+            availableCopies--;
+        }
+    }
+
+    public void returnBook() {
+        if (availableCopies < totalCopies) {
+            availableCopies++;
+        }
     }
 
     @Override
     public String toString() {
         return "ID: " + id +
-                ", Title: " + title +
-                ", Author: " + author +
-                ", Total Copies: " + totalCopies +
-                ", Available Copies: " + availableCopies;
+               ", Title: " + title +
+               ", Author: " + author +
+               ", Total Copies: " + totalCopies +
+               ", Available Copies: " + availableCopies;
     }
 }
