@@ -8,7 +8,7 @@ public class Book {
     private int totalCopies;
     private int availableCopies;
 
-    // Constructor
+    // Constructor (default)
     public Book(int id, String title, String author, int totalCopies) {
         this.id = id;
         this.title = title;
@@ -17,54 +17,37 @@ public class Book {
         this.availableCopies = totalCopies;
     }
 
-    // Getter Methods
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public int getTotalCopies() {
-        return totalCopies;
-    }
-
-    public int getAvailableCopies() {
-        return availableCopies;
-    }
-
-    // Setter Methods
-    public void setId(int id) {
+    // ✅ NEW constructor (important for tests)
+    public Book(int id, String title, String author, int totalCopies, int availableCopies) {
         this.id = id;
-    }
-
-    public void setTitle(String title) {
         this.title = title;
-    }
-
-    public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public void setTotalCopies(int totalCopies) {
         this.totalCopies = totalCopies;
+        this.availableCopies = availableCopies;
     }
 
+    // Getters
+    public int getId() { return id; }
+    public String getTitle() { return title; }
+    public String getAuthor() { return author; }
+    public int getTotalCopies() { return totalCopies; }
+    public int getAvailableCopies() { return availableCopies; }
+
+    // Setter
     public void setAvailableCopies(int availableCopies) {
         this.availableCopies = availableCopies;
     }
 
-    @Override
-    public String toString() {
-        return "ID: " + id +
-                ", Title: " + title +
-                ", Author: " + author +
-                ", Total Copies: " + totalCopies +
-                ", Available Copies: " + availableCopies;
+    // Business logic methods
+    public void issueBook() {
+        if (availableCopies > 0) {
+            availableCopies--;
+        }
+    }
+
+    public void returnBook() {
+        if (availableCopies < totalCopies) {
+            availableCopies++;
+        }
     }
 }
