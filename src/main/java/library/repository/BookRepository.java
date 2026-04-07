@@ -36,4 +36,9 @@ public class BookRepository {
             books.remove(book);
         }
     }
+
+    // Clear all books from storage (for tests or reset)
+    public static void clearBooks() {
+        books.clear();
+    }
 }
