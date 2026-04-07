@@ -14,11 +14,7 @@ public class ReturnBookService {
             return;
         }
 
-        if (book.getAvailableCopies() < book.getTotalCopies()) {
-            book.setAvailableCopies(book.getAvailableCopies() + 1);
-            System.out.println("Book returned successfully");
-        } else {
-            System.out.println("All copies already in library");
-        }
+        // ✅ Better design (use model method)
+        book.returnBook();
     }
 }

@@ -6,20 +6,20 @@ import library.model.Book;
 
 public class BookRepository {
 
-    // Common shared book list (acts like database)
     private static List<Book> books = new ArrayList<>();
 
-    // Add book to storage
     public static void addBook(Book book) {
-        books.add(book);
+        if (findBookById(book.getId()) == null) {
+            books.add(book);
+        } else {
+            System.out.println("Book with this ID already exists");
+        }
     }
 
-    // Get all books
     public static List<Book> getAllBooks() {
-        return books;
+        return new ArrayList<>(books);
     }
 
-    // Find book by ID
     public static Book findBookById(int id) {
         for (Book book : books) {
             if (book.getId() == id) {
@@ -29,11 +29,15 @@ public class BookRepository {
         return null;
     }
 
-    // Delete book (optional, if needed later)
     public static void deleteBook(int id) {
         Book book = findBookById(id);
         if (book != null) {
             books.remove(book);
         }
+    }
+
+    // ✅ useful for tests
+    public static void clearAllBooks() {
+        books.clear();
     }
 }

@@ -8,7 +8,7 @@ public class Book {
     private int totalCopies;
     private int availableCopies;
 
-    // Constructor
+    // Constructor (default)
     public Book(int id, String title, String author, int totalCopies) {
         this.id = id;
         this.title = title;
@@ -17,38 +17,28 @@ public class Book {
         this.availableCopies = totalCopies;
     }
 
+    // ✅ NEW constructor (important for tests)
+    public Book(int id, String title, String author, int totalCopies, int availableCopies) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.totalCopies = totalCopies;
+        this.availableCopies = availableCopies;
+    }
+
     // Getters
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
+    public String getTitle() { return title; }
+    public String getAuthor() { return author; }
+    public int getTotalCopies() { return totalCopies; }
+    public int getAvailableCopies() { return availableCopies; }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public int getTotalCopies() {
-        return totalCopies;
-    }
-
-    public int getAvailableCopies() {
-        return availableCopies;
-    }
-
-    // Setters (keep minimal usage)
+    // Setter
     public void setAvailableCopies(int availableCopies) {
         this.availableCopies = availableCopies;
     }
 
-    public void setTotalCopies(int totalCopies) {
-        this.totalCopies = totalCopies;
-    }
-
-    // ✅ Add helper methods (VERY IMPORTANT for services)
-
+    // Business logic methods
     public void issueBook() {
         if (availableCopies > 0) {
             availableCopies--;
@@ -59,14 +49,5 @@ public class Book {
         if (availableCopies < totalCopies) {
             availableCopies++;
         }
-    }
-
-    @Override
-    public String toString() {
-        return "ID: " + id +
-               ", Title: " + title +
-               ", Author: " + author +
-               ", Total Copies: " + totalCopies +
-               ", Available Copies: " + availableCopies;
     }
 }
