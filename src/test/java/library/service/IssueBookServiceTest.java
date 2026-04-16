@@ -1,6 +1,6 @@
 package library.service;
 
-import library.service.IssueBookService;  // ✅ ADD THIS
+import library.service.IssueBookService; // ✅ ADD THIS
 import library.model.Book;
 import library.repository.BookRepository;
 import org.junit.jupiter.api.Test;
@@ -34,5 +34,16 @@ public class IssueBookServiceTest {
         boolean result = IssueBookService.issueBook(2);
 
         assertFalse(result);
+    }
+
+    @Test
+    void testIssueBookSingleCopy() {
+        Book book = new Book(20, "New Book", "Author", 1);
+        BookRepository.addBook(book);
+
+        boolean result = IssueBookService.issueBook(20);
+
+        assertTrue(result);
+        assertEquals(0, book.getAvailableCopies());
     }
 }
