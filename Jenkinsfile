@@ -2,28 +2,21 @@ pipeline {
     agent any
 
     stages {
-
         stage('Build') {
             steps {
-                dir('Libray-System1') {
-                    bat 'mvn clean compile'
-                }
+                bat 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                dir('Libray-System1') {
-                    bat 'mvn test'
-                }
+                bat 'mvn test'
             }
         }
 
         stage('Package') {
             steps {
-                dir('Libray-System1') {
-                    bat 'mvn package'
-                }
+                bat 'mvn package'
             }
         }
     }
