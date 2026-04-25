@@ -1,22 +1,33 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven'
+    }
+
     stages {
+
         stage('Build') {
             steps {
-                bat 'mvn clean compile'
+                dir('Libray-System1') {
+                    bat 'mvn clean compile'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                bat 'mvn test'
+                dir('Libray-System1') {
+                    bat 'mvn test'
+                }
             }
         }
 
         stage('Package') {
             steps {
-                bat 'mvn package'
+                dir('Libray-System1') {
+                    bat 'mvn package'
+                }
             }
         }
     }
