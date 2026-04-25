@@ -5,7 +5,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir('Libray-System1/Libray-System1') {
+                dir('Libray-System1') {
                     bat 'mvn clean compile'
                 }
             }
@@ -13,7 +13,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                dir('Libray-System1/Libray-System1') {
+                dir('Libray-System1') {
                     bat 'mvn test'
                 }
             }
@@ -21,7 +21,7 @@ pipeline {
 
         stage('Package') {
             steps {
-                dir('Libray-System1/Libray-System1') {
+                dir('Libray-System1') {
                     bat 'mvn package'
                 }
             }
