@@ -18,7 +18,7 @@ public class SearchBookServiceTest {
         BookRepository.clearBooks();
         service = new SearchBookService();
     }
-
+    
     @Test
     void testSearchBookById_Found() {
         Book book = new Book(1, "Java Basics", "Gauri", 5);
@@ -74,7 +74,7 @@ public class SearchBookServiceTest {
         BookRepository.clearBooks();
 
         Book result = service.searchBookById(1);
-
+      
         assertNull(result);
     }
 }
